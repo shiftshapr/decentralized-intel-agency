@@ -15,5 +15,5 @@ install -m 0644 "$SRC" "$DEST"
 ln -sf "$DEST" "$DEST_EN"
 nginx -t
 systemctl reload nginx
-echo "OK: https://decentralizedintel.agency/ — Canopi proxy (after DNS + certbot)"
+echo "OK: https://decentralizedintel.agency/ — public/ + API on 4013 (enable decentralized-intel-site.service)"
 echo "TLS: sudo certbot --nginx -d decentralizedintel.agency -d www.decentralizedintel.agency"

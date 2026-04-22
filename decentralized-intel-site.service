@@ -1,0 +1,25 @@
+[Unit]
+Description=decentralizedintel.agency site API (Express)
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/decentralizedintel-agency
+Environment=NODE_ENV=production
+Environment=PORT=4013
+Environment=SITE_NAME=decentralizedintel.agency
+ExecStart=/usr/bin/node api-server.js
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=decentralized-intel-site
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/home/ubuntu/decentralizedintel-agency
+
+[Install]
+WantedBy=multi-user.target

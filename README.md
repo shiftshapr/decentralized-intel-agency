@@ -1,8 +1,19 @@
 # decentralized-intel-agency
 
-Infrastructure for [decentralizedintel.agency](https://decentralizedintel.agency): NGINX vhost and install script. The live site is the Canopi app on the host (same upstream as `app.canopi.live`).
+[decentralizedintel.agency](https://decentralizedintel.agency) — **same stack as [nft.xowlz.com](https://nft.xowlz.com)**:
 
-- `nginx/decentralizedintel.agency.conf` — vhost definition
-- `install-nginx.sh` — copy to `/etc/nginx` and reload (run with `sudo`)
+- **`public/`** — static files (NGINX `root`)
+- **`api-server.js`** — Express on **127.0.0.1:4013**; NGINX proxies **`/api/*`**
+- **`nginx/decentralizedintel.agency.conf`** — vhost
+- **`install-nginx.sh`** — copy vhost and reload NGINX (`sudo`)
+- **`decentralized-intel-site.service`** — systemd unit for the API (`sudo cp` → `/etc/systemd/system/`)
 
-TLS: after DNS points at the server, `sudo certbot --nginx -d decentralizedintel.agency -d www.decentralizedintel.agency`
+```bash
+cp .env.example .env
+npm install
+npm run dev
+```
+
+TLS: `sudo certbot --nginx -d decentralizedintel.agency -d www.decentralizedintel.agency`
+
+**Note:** This domain previously proxied the full Canopi app. It now matches the xowlz-style static+API layout. Use [app.canopi.live](https://app.canopi.live) for the main Canopi web app.
