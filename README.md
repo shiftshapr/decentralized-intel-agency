@@ -1,8 +1,10 @@
 # decentralized-intel-agency
 
+**Canonical folder on disk:** `decentralizedintel-agency` (this repo). The empty `~/decentralized-intel` directory is not used — remove it if you like to avoid confusion.
+
 [decentralizedintel.agency](https://decentralizedintel.agency) — **same stack as [nft.xowlz.com](https://nft.xowlz.com)**:
 
-- **`public/`** — static files (NGINX `root`)
+- **`public/`** — static files (NGINX `root`); `public/assets` → `../assets` (WebP art)
 - **`api-server.js`** — Express on **127.0.0.1:4013**; NGINX proxies **`/api/*`**
 - **`nginx/decentralizedintel.agency.conf`** — vhost
 - **`install-nginx.sh`** — copy vhost and reload NGINX (`sudo`)

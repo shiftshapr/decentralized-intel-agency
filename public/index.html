@@ -3,32 +3,131 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
   <title>Decentralized Intel Agency</title>
-  <meta name="description" content="Decentralized Intel Agency">
+  <meta name="description" content="Decentralized Intel Agency — claims, evidence, signals.">
   <style>
-    :root { --bg: #0a0e14; --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff; }
+    :root {
+      --bg: #060809;
+      --surface: #0e1114;
+      --text: #e8eaed;
+      --muted: #8b939e;
+      --accent: #3db9e0;
+      --accent-dim: rgba(61, 185, 224, 0.2);
+      --border: rgba(255, 255, 255, 0.06);
+    }
     * { box-sizing: border-box; }
+    html, body { height: 100%; }
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
       background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -15%, var(--accent-dim), transparent 50%),
+        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(61, 185, 224, 0.05), transparent 45%);
       color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      text-align: center;
+      line-height: 1.5;
     }
-    h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 600; margin: 0 0 0.75rem; letter-spacing: -0.02em; }
-    p { margin: 0; color: var(--muted); max-width: 36rem; line-height: 1.5; }
-    .domain { color: var(--accent); font-weight: 500; }
-    code { font-size: 0.9em; }
+    .wrap {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: clamp(1.25rem, 4vw, 2.5rem);
+    }
+    header {
+      text-align: center;
+      margin-bottom: clamp(2rem, 5vw, 3rem);
+    }
+    .mark {
+      max-width: 14rem;
+      margin: 0 auto 1.25rem;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px var(--border), 0 20px 50px rgba(0, 0, 0, 0.45);
+      background: var(--surface);
+    }
+    .mark img {
+      display: block;
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+    }
+    h1 {
+      font-size: clamp(1.5rem, 4vw, 1.85rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.35rem;
+    }
+    .tagline {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 28rem;
+      margin-inline: auto;
+    }
+    .grid {
+      display: grid;
+      gap: clamp(1rem, 3vw, 1.35rem);
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    }
+    figure {
+      margin: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+    figcaption {
+      padding: 0.65rem 0.85rem 0.85rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    footer {
+      margin-top: clamp(2.5rem, 6vw, 4rem);
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
   </style>
 </head>
 <body>
-  <h1>Decentralized Intel Agency</h1>
-  <p><span class="domain">decentralizedintel.agency</span> — static files in <code>public/</code>; API at <code>/api/</code> (xowlz-style stack).</p>
+  <div class="wrap">
+    <header>
+      <div class="mark">
+        <img src="assets/DIA.webp" width="600" height="600" alt="Decentralized Intel Agency mark" loading="eager" decoding="async">
+      </div>
+      <h1>Decentralized Intel Agency</h1>
+      <p class="tagline">Claims, evidence, and stacked signals — a simple front door while the site grows.</p>
+    </header>
+
+    <section class="grid" aria-label="Highlights">
+      <figure>
+        <img src="assets/claim%20evidence.webp" width="600" height="600" alt="Claim and evidence" loading="lazy" decoding="async">
+        <figcaption>Claim &amp; evidence</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/dia%20fig%20stack.webp" width="600" height="600" alt="Figure stack" loading="lazy" decoding="async">
+        <figcaption>Figure stack</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/Bride%20of%20Charlie%20square.webp" width="600" height="600" alt="Bride of Charlie" loading="lazy" decoding="async">
+        <figcaption>Bride of Charlie</figcaption>
+      </figure>
+    </section>
+
+    <footer>
+      <span>decentralizedintel.agency</span>
+    </footer>
+  </div>
 </body>
 </html>
