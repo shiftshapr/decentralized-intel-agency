@@ -5,129 +5,403 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <title>Decentralized Intelligence Agency</title>
-  <meta name="description" content="Decentralized Intelligence Agency – claims, evidence, and stacked signals in a free speech zone for open source investigators, internet researchers, and truth seekers.">
+  <meta name="description" content="Decentralized Intelligence Agency – claims, evidence, and stacked signals in a free speech zone for open source investigators, internet researchers, and truth seekers. In private beta.">
+  <meta property="og:title" content="Decentralized Intelligence Agency">
+  <meta property="og:description" content="Claims, evidence, and stacked signals – in a free speech zone for open source investigators, internet researchers, and truth seekers.">
+  <meta property="og:image" content="https://decentralizedintel.agency/assets/DIA.webp">
+  <link rel="icon" href="/assets/DIA.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    /* Meta-Layer estate look (theoverweb.org): deep navy, soft glows, Fraunces + Space Grotesk, glass cards.
+       DIA keeps its own accent: the brass of the DIA mark, with the estate's cyan for labels and links. */
     :root {
-      --bg: #060809;
-      --surface: #0e1114;
-      --text: #e8eaed;
-      --muted: #8b939e;
-      --accent: #3db9e0;
-      --accent-dim: rgba(61, 185, 224, 0.2);
-      --border: rgba(255, 255, 255, 0.06);
+      --bg: #050816;
+      --bg-2: #0a1228;
+      --card: rgba(12, 22, 48, 0.72);
+      --ink: #eef4ff;
+      --muted: #9bb0d0;
+      --soft: rgba(155, 176, 208, 0.75);
+      --line: rgba(120, 180, 255, 0.16);
+      --cyan: #3ee0ff;
+      --brass: #d9b26a;
+      --brass-2: #b88a3e;
+      --brass-soft: rgba(217, 178, 106, 0.12);
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+      --max: 72rem;
     }
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
-      background: var(--bg);
-      background-image:
-        radial-gradient(ellipse 80% 50% at 50% -15%, var(--accent-dim), transparent 50%),
-        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(61, 185, 224, 0.05), transparent 45%);
-      color: var(--text);
-      line-height: 1.5;
+      background:
+        radial-gradient(ellipse 85% 55% at 8% -5%, rgba(217, 178, 106, 0.10), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 95% 15%, rgba(62, 224, 255, 0.08), transparent 50%),
+        radial-gradient(ellipse 55% 40% at 60% 95%, rgba(192, 132, 252, 0.06), transparent 55%),
+        var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.6;
     }
-    .wrap {
-      max-width: 56rem;
-      margin: 0 auto;
-      padding: clamp(1.25rem, 4vw, 2.5rem);
+    a { color: var(--cyan); }
+    img { max-width: 100%; }
+
+    /* Header */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 0.8rem clamp(1rem, 4vw, 2.5rem);
+      background: rgba(5, 8, 22, 0.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
     }
-    header {
-      text-align: center;
-      margin-bottom: clamp(2rem, 5vw, 3rem);
+    .brand { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--ink); text-decoration: none; font-weight: 600; min-width: 0; }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; box-shadow: 0 0 0 1px var(--line); }
+    .brand span { white-space: nowrap; }
+    .brand-short { display: none; }
+    .site-nav .nav-cta { white-space: nowrap; }
+    .site-nav { display: flex; align-items: center; gap: 1.4rem; }
+    .site-nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+    .site-nav a:hover { color: var(--ink); }
+    .site-nav .nav-cta {
+      color: var(--ink); padding: 0.45rem 1rem; border-radius: 999px;
+      border: 1px solid rgba(217, 178, 106, 0.45); background: var(--brass-soft);
     }
-    .mark {
-      max-width: 14rem;
-      margin: 0 auto 1.25rem;
-      border-radius: 0.75rem;
-      overflow: hidden;
-      box-shadow: 0 0 0 1px var(--border), 0 20px 50px rgba(0, 0, 0, 0.45);
-      background: var(--surface);
+
+    /* Layout */
+    main { overflow-x: clip; }
+    .section-inner { max-width: var(--max); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2.5rem); }
+    section { padding: clamp(3.5rem, 8vw, 5.5rem) 0; border-top: 1px solid rgba(120, 180, 255, 0.08); }
+    section.hero { border-top: 0; padding-top: clamp(3rem, 8vw, 5.5rem); }
+    .section-label {
+      display: block; margin-bottom: 0.5rem; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--cyan); font-weight: 600;
     }
-    .mark img {
-      display: block;
-      width: 100%;
-      height: auto;
-      vertical-align: middle;
+    h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -0.01em; }
+    h2 { font-size: clamp(1.65rem, 3.5vw, 2.15rem); line-height: 1.2; margin: 0 0 0.9rem; }
+    h3 { font-size: 1.2rem; margin: 0 0 0.4rem; }
+    .lead { color: var(--muted); font-size: 1.08rem; max-width: 46rem; margin: 0; }
+
+    /* Hero */
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+    .hero-kicker {
+      display: inline-block; margin: 0 0 1rem; padding: 0.3rem 0.75rem; border-radius: 999px;
+      border: 1px solid rgba(217, 178, 106, 0.4); background: var(--brass-soft); color: var(--brass);
+      font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
     }
-    h1 {
-      font-size: clamp(1.5rem, 4vw, 1.85rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      margin: 0 0 0.35rem;
+    .hero h1 { font-size: clamp(2.3rem, 6vw, 3.9rem); line-height: 1.06; margin: 0 0 1.1rem; }
+    .hero-lead { font-size: clamp(1.08rem, 2vw, 1.25rem); color: #d6e2f5; max-width: 40rem; margin: 0 0 0.9rem; }
+    .hero-sub { color: var(--soft); max-width: 38rem; margin: 0; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.8rem; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+      padding: 0.72rem 1.3rem; border-radius: 999px; border: 1px solid transparent;
+      font: inherit; font-weight: 600; font-size: 0.97rem; text-decoration: none; cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .tagline {
-      margin: 0;
-      font-size: 0.95rem;
-      color: var(--muted);
-      max-width: 42rem;
-      margin-inline: auto;
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: linear-gradient(135deg, var(--brass), var(--brass-2)); color: #1a1205; box-shadow: 0 8px 24px rgba(217, 178, 106, 0.18); }
+    .btn-secondary { border-color: var(--line); color: var(--ink); background: rgba(255, 255, 255, 0.04); }
+    .hero-mark {
+      position: relative; justify-self: center; width: min(100%, 22rem); aspect-ratio: 1;
+      border-radius: 22px; overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(217, 178, 106, 0.25), 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 90px rgba(217, 178, 106, 0.10);
     }
-    .grid {
-      display: grid;
-      gap: clamp(1rem, 3vw, 1.35rem);
-      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    .hero-mark img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    /* Cards */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
     }
-    figure {
-      margin: 0;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 0.75rem;
-      overflow: hidden;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    .card img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+    .card-body { padding: 1.1rem 1.25rem 1.3rem; }
+    .card-body p { margin: 0; color: var(--muted); }
+
+    /* Archive feature */
+    .feature {
+      position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 17rem; gap: 2.5rem; align-items: center;
+      margin-top: 2rem; padding: clamp(1.4rem, 4vw, 2.2rem);
+      border-radius: 20px; border: 1px solid rgba(217, 178, 106, 0.3);
+      background: linear-gradient(135deg, rgba(217, 178, 106, 0.10), rgba(12, 22, 48, 0.85) 45%, rgba(62, 224, 255, 0.06));
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
     }
-    figure img {
-      display: block;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 1;
-      object-fit: cover;
+    .card-tag {
+      display: inline-block; margin-bottom: 0.8rem; padding: 0.2rem 0.65rem; border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: #061018; background: linear-gradient(135deg, #7ee8ff 0%, #c4a7ff 55%, #ffd6a5 100%);
     }
-    figcaption {
-      padding: 0.75rem 0.9rem 0.95rem;
-      font-size: 0.88rem;
-      color: var(--text);
-      line-height: 1.45;
-      letter-spacing: 0.01em;
+    .feature h3 { font-size: clamp(1.4rem, 3vw, 1.8rem); }
+    .feature p { color: var(--muted); margin: 0 0 0.6rem; max-width: 40rem; }
+    .feature ul { margin: 0.8rem 0 0; padding-left: 1.1rem; color: var(--muted); }
+    .feature li + li { margin-top: 0.25rem; }
+    .feature-side { display: flex; flex-direction: column; gap: 0.7rem; align-items: stretch; }
+    .lock-note { font-size: 0.88rem; color: var(--soft); margin: 0; }
+    .lock-note a { color: var(--brass); }
+
+    /* Waitlist (same Gov Hub join as theoverweb.org) */
+    .waitlist-card {
+      padding: clamp(1.5rem, 4vw, 2.4rem); border-radius: 20px; border: 1px solid var(--line);
+      background: var(--card); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
     }
-    footer {
-      margin-top: clamp(2.5rem, 6vw, 4rem);
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--muted);
+    .waitlist-form { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+    .waitlist-form input {
+      flex: 1 1 14rem; min-width: 0; padding: 0.72rem 1rem; border-radius: 999px;
+      border: 1px solid var(--line); background: rgba(255, 255, 255, 0.04); color: var(--ink); font: inherit;
+    }
+    .waitlist-form #waitlist-note { flex: 2 1 20rem; }
+    .waitlist-form input::placeholder { color: rgba(155, 176, 208, 0.6); }
+    .waitlist-form input:focus { outline: 2px solid var(--brass); outline-offset: 1px; }
+    .waitlist-form button[disabled] { opacity: 0.6; cursor: wait; }
+    .waitlist-msg { margin: 0.9rem 0 0; max-width: 46rem; }
+    .waitlist-msg--error { color: #fca5a5; }
+    .waitlist-msg--ok { color: #8ee6c8; }
+    .fine { margin: 1rem 0 0; font-size: 0.85rem; color: var(--soft); }
+    .visually-hidden {
+      position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+    .waitlist-modal { position: fixed; inset: 0; z-index: 2147482000; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(3, 6, 18, 0.72); backdrop-filter: blur(3px); }
+    .waitlist-modal[hidden] { display: none; }
+    .waitlist-modal__card { position: relative; width: min(520px, 100%); padding: 28px 24px 22px; border: 1px solid rgba(217, 178, 106, 0.3); border-radius: 18px; background: var(--bg-2); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6); }
+    .waitlist-modal__card h2 { margin-top: 0.2rem; }
+    .waitlist-modal__card .lead { font-size: 1rem; }
+    .waitlist-modal__x { position: absolute; top: 10px; right: 12px; border: 0; background: transparent; color: var(--muted); font-size: 1.6rem; line-height: 1; cursor: pointer; }
+    .waitlist-modal__x:hover { color: var(--ink); }
+
+    /* Footer */
+    /* estate-chrome.js appends Privacy, Terms and Cookie settings to the footer */
+    .site-footer {
+      display: flex; flex-wrap: wrap; gap: 0.5rem 0.4rem; align-items: center;
+      border-top: 1px solid var(--line); color: var(--soft); font-size: 0.9rem;
+      padding: 2rem max(clamp(1rem, 4vw, 2.5rem), calc((100% - var(--max)) / 2 + clamp(1rem, 4vw, 2.5rem))) 2.5rem;
+    }
+    .site-footer p { margin: 0 auto 0 0; }
+    .site-footer a, .site-footer button { color: var(--soft); }
+
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-mark { order: -1; width: min(60%, 14rem); }
+      .grid-3 { grid-template-columns: 1fr; max-width: 30rem; }
+      .feature { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .site-nav a:not(.nav-cta) { display: none; }
+      .brand-full { display: none; }
+      .brand .brand-short { display: inline; letter-spacing: 0.06em; }
+      .cta-long { display: none; }
+      .cta-row .btn { flex: 1 1 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn { transition: none; }
+      .btn:hover { transform: none; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="mark">
-        <img src="assets/DIA.webp" width="600" height="600" alt="Decentralized Intelligence Agency mark" loading="eager" decoding="async">
-      </div>
-      <h1>Decentralized Intelligence Agency</h1>
-      <p class="tagline">Claims, evidence, and stacked signals – in a free speech zone for open source investigators and internet researchers, and truth seekers.</p>
-    </header>
+  <header class="site-header">
+    <a class="brand" href="#top" data-estate-brand>
+      <img src="/assets/DIA.webp" alt="" width="34" height="34" decoding="async">
+      <span class="brand-full">Decentralized Intelligence Agency</span><span class="brand-short">DIA</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#method">Method</a>
+      <a href="#archive">Archive</a>
+      <a href="#waitlist" class="nav-cta">Join<span class="cta-long"> the waitlist</span></a>
+    </nav>
+  </header>
 
-    <section class="grid" aria-label="Highlights">
-      <figure>
-        <img src="assets/claim%20evidence.webp" width="600" height="600" alt="Separated, so they can actually be understood." loading="lazy" decoding="async">
-        <figcaption>Separated, so they can actually be understood.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/dia%20fig%20stack.webp" width="600" height="600" alt="Where claims become something that can be examined." loading="lazy" decoding="async">
-        <figcaption>Where claims become something that can be examined.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/Bride%20of%20Charlie%20square.webp" width="600" height="600" alt="Where this instinct is already being expressed." loading="lazy" decoding="async">
-        <figcaption>Where this instinct is already being expressed.</figcaption>
-      </figure>
+  <main id="top">
+    <section class="hero">
+      <div class="section-inner hero-grid">
+        <div>
+          <p class="hero-kicker">Open source intelligence</p>
+          <h1>Decentralized Intelligence Agency</h1>
+          <p class="hero-lead">Claims, evidence, and stacked signals – in a free speech zone for open source investigators, internet researchers, and truth seekers.</p>
+          <p class="hero-sub">Each claim is kept apart from its evidence and findings, tied to the moment it was said, and left open to examination.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#waitlist">Join the waitlist</a>
+            <a class="btn btn-secondary" href="https://beta.decentralizedintel.agency/">Open the Candace Kirk Archive &rarr;</a>
+          </div>
+        </div>
+        <div class="hero-mark">
+          <img src="/assets/DIA.webp" alt="DIA" width="600" height="600" fetchpriority="high">
+        </div>
+      </div>
     </section>
 
-    <footer>
-      <span>decentralizedintel.agency</span>
-    </footer>
+    <section id="method">
+      <div class="section-inner">
+        <span class="section-label">Method</span>
+        <h2>From a claim to something you can examine</h2>
+        <div class="grid-3">
+          <article class="card">
+            <img src="/assets/claim%20evidence.webp" alt="Folders labelled Claim, Evidence and Findings" width="600" height="600" loading="lazy" decoding="async">
+            <div class="card-body">
+              <h3>Claims, evidence, findings</h3>
+              <p>Separated, so they can actually be understood.</p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="/assets/dia%20fig%20stack.webp" alt="Stacked translucent layers in public discovery mode" width="600" height="600" loading="lazy" decoding="async">
+            <div class="card-body">
+              <h3>Stacked signals</h3>
+              <p>Where claims become something that can be examined.</p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="/assets/Bride%20of%20Charlie%20square.webp" alt="Bride of Charlie, an investigative series" width="600" height="600" loading="lazy" decoding="async">
+            <div class="card-body">
+              <h3>Already underway</h3>
+              <p>Where this instinct is already being expressed.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="archive">
+      <div class="section-inner">
+        <span class="section-label">Archive</span>
+        <h2>Investigations</h2>
+        <div class="feature">
+          <div>
+            <span class="card-tag">Private beta</span>
+            <h3>Candace Kirk Archive</h3>
+            <p>Every claim from Candace Owens's coverage of the Charlie Kirk case, with its sources, timestamps and open questions.</p>
+            <ul>
+              <li>Each claim links to the moment it was said</li>
+              <li>Sources and open questions sit beside every claim</li>
+              <li>New episodes are added as they come out</li>
+            </ul>
+          </div>
+          <div class="feature-side">
+            <a class="btn btn-primary" href="https://beta.decentralizedintel.agency/">Open the archive &rarr;</a>
+            <p class="lock-note">Password protected: enter the access phrase you were given. No phrase yet? <a href="#waitlist">Join the waitlist</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="waitlist">
+      <div class="section-inner">
+        <div class="waitlist-card">
+          <span class="section-label">Private beta</span>
+          <h2>Join the DIA waitlist</h2>
+          <p class="lead">DIA is in private beta. Join the waitlist for an access phrase as places open, and updates as new investigations are added. We'll email you once to confirm.</p>
+          <form class="waitlist-form" id="waitlist-form" novalidate>
+            <label class="visually-hidden" for="waitlist-email">Email address</label>
+            <input id="waitlist-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+            <label class="visually-hidden" for="waitlist-note">What you investigate (optional)</label>
+            <input id="waitlist-note" name="note" type="text" maxlength="500" placeholder="What you investigate (optional)">
+            <button type="submit" class="btn btn-primary">Join the waitlist</button>
+          </form>
+          <p class="waitlist-msg waitlist-msg--error" id="waitlist-error" role="alert" hidden></p>
+          <p class="waitlist-msg waitlist-msg--ok" id="waitlist-ok" role="status" hidden></p>
+          <p class="fine">Your address stays with the DIA waitlist on Gov Hub and is never sold.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="waitlist-modal" id="waitlist-modal" role="dialog" aria-modal="true" aria-labelledby="waitlist-modal-title" hidden>
+    <div class="waitlist-modal__card">
+      <button type="button" class="waitlist-modal__x" id="waitlist-modal-close" aria-label="Close">&times;</button>
+      <span class="section-label">Private beta</span>
+      <h2 id="waitlist-modal-title">Get into the private beta</h2>
+      <p class="lead">DIA's archive is open by invitation while we test it. Join the waitlist and we'll email you an access phrase when your place opens.</p>
+      <form class="waitlist-form" id="waitlist-modal-form" novalidate>
+        <label class="visually-hidden" for="waitlist-modal-email">Email address</label>
+        <input id="waitlist-modal-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+        <button type="submit" class="btn btn-primary">Join the waitlist</button>
+      </form>
+      <p class="waitlist-msg waitlist-msg--error" role="alert" hidden></p>
+      <p class="waitlist-msg waitlist-msg--ok" role="status" hidden></p>
+    </div>
   </div>
+
+  <footer class="site-footer">
+    <p>Decentralized Intelligence Agency · decentralizedintel.agency</p>
+  </footer>
+
+  <script>
+    // Gov Hub waitlist on the "Decentralized Intelligence Agency" layer. Signs up on this page; Gov Hub emails a
+    // confirmation link. POST /api/waitlists/<id>/join-email/ (no auth; Gov Hub must allow this origin in
+    // _WAITLIST_EMAIL_CORS_ORIGINS). The same waitlist opens as a popup 13 seconds after a visitor's first load
+    // (once per browser). Same pattern as theoverweb.org.
+    (function () {
+      var ID = ''; // Gov Hub waitlist id: set once the waitlist exists. Empty = forms say so and no popup.
+      var API = 'https://interfacehub.net/api/waitlists/' + ID + '/join-email/';
+      var SEEN = 'dia_waitlist_popup_v1';
+      var params = new URLSearchParams(location.search);
+      var preview = /^(staging\.|localhost|127\.)/.test(location.hostname);
+      if (preview && params.get('waitlist')) { ID = params.get('waitlist'); API = (params.get('api') || 'https://interfacehub.net') + '/api/waitlists/' + ID + '/join-email/'; }
+      function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+      function wire(form, emailEl, noteEl, errEl, okEl) {
+        if (!form) return;
+        var btn = form.querySelector('button[type="submit"]');
+        var label = btn ? btn.textContent : '';
+        function show(el, msg) { if (el) { el.textContent = msg || ''; el.hidden = !msg; } }
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          show(errEl, ''); show(okEl, '');
+          var v = String(emailEl.value || '').trim().toLowerCase();
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { show(errEl, 'Please enter a valid email address.'); emailEl.focus(); return; }
+          if (!ID) { show(errEl, 'The waitlist opens shortly. Please check back soon.'); return; }
+          if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+          fetch(API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: v, message: noteEl ? String(noteEl.value || '').trim() : '', source: 'decentralizedintel.agency', source_url: location.href })
+          })
+            .then(function (r) { return r.json().catch(function () { return {}; }).then(function (b) { return { ok: r.ok, b: b }; }); })
+            .then(function (res) {
+              if (!res.ok) throw new Error(res.b.error || 'Something went wrong. Please try again.');
+              form.reset();
+              store(SEEN, '1');
+              show(okEl, res.b.info || 'Check your inbox and click the link to confirm your place.');
+            })
+            .catch(function (x) { show(errEl, x && x.message && x.message !== 'Failed to fetch' ? x.message : 'Something went wrong. Please try again.'); })
+            .then(function () { if (btn) { btn.disabled = false; btn.textContent = label; } });
+        });
+      }
+      wire(document.getElementById('waitlist-form'), document.getElementById('waitlist-email'), document.getElementById('waitlist-note'),
+        document.getElementById('waitlist-error'), document.getElementById('waitlist-ok'));
+      var modal = document.getElementById('waitlist-modal');
+      if (!modal) return;
+      wire(document.getElementById('waitlist-modal-form'), document.getElementById('waitlist-modal-email'), null,
+        modal.querySelector('.waitlist-msg--error'), modal.querySelector('.waitlist-msg--ok'));
+      function close() { modal.hidden = true; store(SEEN, '1'); document.removeEventListener('keydown', onKey); }
+      function onKey(e) { if (e.key === 'Escape') close(); }
+      document.getElementById('waitlist-modal-close').addEventListener('click', close);
+      modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+      var previewPopup = preview && params.get('waitlistpopup') === '1';
+      if (!ID && !previewPopup) return;
+      if (store(SEEN) === '1' && !previewPopup) return;
+      setTimeout(function () {
+        if (location.hash === '#waitlist') return; // already on the form
+        modal.hidden = false;
+        document.addEventListener('keydown', onKey);
+        var input = document.getElementById('waitlist-modal-email');
+        if (input) input.focus({ preventScroll: true });
+      }, previewPopup ? 1500 : 13000);
+    })();
+  </script>
+  <script
+    id="estate-chrome"
+    src="/assets/estate-chrome.js?v=20261113"
+    data-site-name="DIA"
+    data-stage="private-beta"
+    data-waitlist-url="/#waitlist"
+    data-support-url="https://metawebbook.com/activity/?tab=contact"
+    data-contact-email="info@bridgit.io"
+    data-privacy-url="https://bridgit.io/privacy"
+    data-terms-url="https://bridgit.io/terms"
+  ></script>
 </body>
 </html>
