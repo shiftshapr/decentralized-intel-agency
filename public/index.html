@@ -330,12 +330,12 @@
   </footer>
 
   <script>
-    // Gov Hub waitlist on the "Decentralized Intelligence Agency" layer. Signs up on this page; Gov Hub emails a
+    // Gov Hub waitlist "DIA Updates List" on the "Decentralized Intelligence Agency" layer. Signs up on this page; Gov Hub emails a
     // confirmation link. POST /api/waitlists/<id>/join-email/ (no auth; Gov Hub must allow this origin in
     // _WAITLIST_EMAIL_CORS_ORIGINS). The same waitlist opens as a popup 13 seconds after a visitor's first load
     // (once per browser). Same pattern as theoverweb.org.
     (function () {
-      var ID = ''; // Gov Hub waitlist id: set once the waitlist exists. Empty = forms say so and no popup.
+      var ID = '7b940117-9a47-480e-98ed-3e73b99532fd'; // Gov Hub "DIA Updates List" (layer Decentralized Intelligence Agency)
       var API = 'https://interfacehub.net/api/waitlists/' + ID + '/join-email/';
       var SEEN = 'dia_waitlist_popup_v1';
       var params = new URLSearchParams(location.search);
