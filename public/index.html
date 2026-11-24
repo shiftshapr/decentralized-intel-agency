@@ -161,6 +161,9 @@
     .waitlist-msg--error { color: #fca5a5; }
     .waitlist-msg--ok { color: #8ee6c8; }
     .fine { margin: 1rem 0 0; font-size: 0.85rem; color: var(--soft); }
+    .creator-line { color: var(--muted); }
+    .creator-line strong { color: var(--ink); font-weight: 600; }
+    .creator-line + .fine { margin-top: 0.4rem; }
     .visually-hidden {
       position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
       overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
@@ -298,11 +301,12 @@
             <label class="visually-hidden" for="waitlist-email">Email address</label>
             <input id="waitlist-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
             <label class="visually-hidden" for="waitlist-note">What you investigate (optional)</label>
-            <input id="waitlist-note" name="note" type="text" maxlength="500" placeholder="What you investigate (optional)">
+            <input id="waitlist-note" name="note" type="text" maxlength="500" placeholder="Your channel or focus (optional)">
             <button type="submit" class="btn btn-primary">Join the waitlist</button>
           </form>
           <p class="waitlist-msg waitlist-msg--error" id="waitlist-error" role="alert" hidden></p>
           <p class="waitlist-msg waitlist-msg--ok" id="waitlist-ok" role="status" hidden></p>
+          <p class="fine creator-line"><strong>Make videos or write about the case?</strong> Put your channel or site in the note and we'll get you in early.</p>
           <p class="fine">Your address stays with the DIA waitlist on Gov Hub and is never sold.</p>
         </div>
       </div>
